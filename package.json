@@ -1,0 +1,54 @@
+{
+  "name": "grapesjs-darkreader",
+  "version": "0.1.0",
+  "description": "GrapesJS plugin: generated dark / light theme of the site with the Dark Reader engine — a theme toggle component, a \"Theme\" tab with the settings and a live preview in the canvas.",
+  "type": "module",
+  "main": "./dist/grapesjs-darkreader.umd.cjs",
+  "module": "./dist/grapesjs-darkreader.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/grapesjs-darkreader.umd.js",
+  "jsdelivr": "./dist/grapesjs-darkreader.umd.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/grapesjs-darkreader.js",
+      "require": "./dist/grapesjs-darkreader.umd.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc -p tsconfig.json --emitDeclarationOnly && node -e \"require('fs').copyFileSync('dist/grapesjs-darkreader.umd.cjs','dist/grapesjs-darkreader.umd.js')\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:package": "node scripts/check-package.mjs",
+    "prepublishOnly": "npm run check:package && npm run typecheck && npm test && npm run build"
+  },
+  "peerDependencies": {
+    "grapesjs": ">=0.21.0 <1.0.0"
+  },
+  "devDependencies": {
+    "grapesjs": "0.21.13",
+    "jsdom": "^25.0.1",
+    "typescript": "5.6.3",
+    "vite": "5.4.11",
+    "vitest": "^2.1.9"
+  },
+  "keywords": [
+    "grapesjs",
+    "grapesjs-plugin",
+    "dark-mode",
+    "dark-theme",
+    "darkreader",
+    "theme-toggle",
+    "color-scheme"
+  ],
+  "author": "Alexander Shibisty",
+  "license": "MIT"
+}
